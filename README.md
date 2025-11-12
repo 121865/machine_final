@@ -1,10 +1,11 @@
 # machine_final
 ## Ping Pong
- - ### 預計使用演算法
-   #### Proximal Policy Optimization (PPO)
-       三個Components:Agent、Enviroment、Reward Function  
-       On-policy:跟環境互動的Agent與訓練的Agent為同一個  
-       Off-policy:跟環境互動的Agent與訓練的Agent非同一個  
+- ### 預計使用演算法
+#### Proximal Policy Optimization (PPO)
+三個Components:Agent、Enviroment、Reward Function  
+On-policy:跟環境互動的Agent與訓練的Agent為同一個  
+Off-policy:跟環境互動的Agent與訓練的Agent非同一個  
+![image]((https://github.com/121865/machine_final/blob/main/on_policy_formula.png))
        
 
 

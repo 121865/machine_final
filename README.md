@@ -54,7 +54,7 @@ R : 過去收集的數據
 <img width="354" height="42" alt="image" src="https://github.com/user-attachments/assets/8997e6ee-4389-4bce-bba9-9d816dd2ab37" />
 
 - ### Object function
-<img width="347" height="65" alt="image" src="https://github.com/user-attachments/assets/cd0d1d68-816f-44e9-957c-11bc5682cc79" />
+<img width="347" height="65" alt="image" src="https://github.com/user-attachments/assets/cd0d1d68-816f-44e9-957c-11bc5682cc79" />  
 - ### 應用
 狀態價值函數 : 衡量當前局面的好壞  
 策略函數 : 決定模型在棋盤上的走法選擇傾向  

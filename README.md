@@ -1,4 +1,4 @@
 # machine_final
 ## Ping Pong  
-  ### Method
+ - ### Method
 ## Chess

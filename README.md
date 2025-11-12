@@ -1,5 +1,6 @@
 # machine_final
-## Ping Pong  
- - ### Method
-   - **PPO**
+## Ping Pong
+ - ### 方法
+ - ### 預計使用模型
+ - ### Loss function
 ## Chess

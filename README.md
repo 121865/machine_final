@@ -35,7 +35,7 @@ Off-policy Gradient:<img width="421" height="67" alt="image" src="https://github
 - ### 預計使用演算法
 #### Soft Actor-Critic (SAC)
 簡介 : 前身為Soft Q-learning，因為Soft Q-learning是使用一個函數Q的Boltzmann distribution，在連續空間下求解麻煩  
-       所以提出了**Actor**表示策略函數(Policy function)，屬於off-policy。
+       所以提出了 **Actor** 表示策略函數(Policy function)，屬於off-policy。
 - ### 狀態價值函數
 <img width="533" height="39" alt="image" src="https://github.com/user-attachments/assets/de5c24f6-20e8-4445-ae9e-8469bf29ead9" />  
 
@@ -45,7 +45,7 @@ SAC中有兩個動作價值函數Q(參數分別為ω1、ω2)及一個策略函�
 R : 過去收集的數據  
 **策略π的loss function**由KL散度得到 :  
 <img width="367" height="39" alt="image" src="https://github.com/user-attachments/assets/916698cc-6b08-4a10-9fed-2aaf27ee72fa" />  
-運用**重參數化技巧(reparameterization trick)**及同時考慮兩個函數Q後，重寫策略π的loss function :  
+運用 **重參數化技巧(reparameterization trick)** 及同時考慮兩個函數Q後，重寫策略π的loss function :  
 <img width="515" height="67" alt="image" src="https://github.com/user-attachments/assets/d1ccfc25-760c-4ef7-a699-e0f5b92cd4f4" />  
 在SAC中，如果在最優狀態不確定的情況下Entropy的取值會盡量取大一點；比較確定的情況下則是取小一點。  
 為了能自動調整Entropy正則項，將目標改寫成  

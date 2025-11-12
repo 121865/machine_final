@@ -7,7 +7,8 @@ On-policy:跟環境互動的Agent與訓練的Agent為同一個
 Off-policy:跟環境互動的Agent與訓練的Agent非同一個  
 
 On-policy Gradient:
-![image]()
+<img width="317" height="39" alt="image" src="https://github.com/user-attachments/assets/2d2482cb-6efc-482e-97fe-809f95270d35" />
+
 
 
        

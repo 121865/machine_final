@@ -1,3 +1,3 @@
 # machine_final
-##Ping Pong
-##Chess
+## Ping Pong  
+## Chess

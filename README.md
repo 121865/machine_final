@@ -1,4 +1,4 @@
-# machine_final
+# machine_final$``$
 ## Ping Pong
 - ### 預計使用演算法
 #### Proximal Policy Optimization (PPO)
@@ -11,6 +11,13 @@ __On-policy Gradient:__
 ```math
 E_{(s_t, a_t) \sim \pi_\theta} \left[ A^\theta(s_t, a_t) \nabla \log p_\theta(a^n_t \vert s^n_t) \right]
 ```
+
+  * $`(a^n_t \vert s^n_t)`$是整個trajectory內的某一個時間點的成對資料(pair)
+    * 如果這個pair會導致整個trajectory的reward變大，那就要增加它出現的機率，反之則減少。
+  * $`A^\theta(s_t,a_t)`$:在某一個state-$`s_t`$執行某一個action-$`a_t`$，相較於其它可能的action，現在執行的這一個有多好。
+
+<img width="681" height="233" alt="image" src="https://github.com/user-attachments/assets/8b8b1d4d-56b5-42fd-94ee-c702c2305d2e" />
+
 ---
 __Importance Sampling__:
 ```math
@@ -29,30 +36,40 @@ __Importance Sampling__:
 
 
 
-Off-policy Gradient:
-
+__Off-policy Gradient:__
+```math
+E_{(s_t, a_t) \sim \pi_{\theta'}} \left[ \dfrac{P_\theta(s_t, a_t)}{P_{\theta'}(s_t, a_t)} A^{\theta'}(s_t, a_t) \nabla \log p_\theta(a^n_t \vert s^n_t) \right]
+```
 機率拆解如下  
-<img width="481" height="68" alt="image" src="https://github.com/user-attachments/assets/92334c15-91b7-47cb-aa92-f9d80c7e393d" />
+```math
+E_{(s_t, a_t) \sim \pi_{\theta'}} \left[ \dfrac{P_\theta(a_t \vert s_t)}{P_{\theta'}(a_t \vert s_t)} \dfrac{p_\theta(s_t)}{p_{\theta'}(s_t)} A^{\theta'}(s_t, a_t) \nabla \log p_\theta(a^n_t \vert s^n_t) \right]
+```
+  * 假設模型在$`\theta`$與$`\theta'`$看到$`s_t`$的機率是差不多的，因此刪除。
+  * 另一個想法，$`s_t`$難以估測，因此無視。
 
 
-可以藉由此公式<img width="204" height="36" alt="image" src="https://github.com/user-attachments/assets/aa7e6fc1-3846-4b61-8390-2edcc4c78536" />反推得**Object Function**  
-<img width="366" height="62" alt="image" src="https://github.com/user-attachments/assets/5fde6c83-c1e9-4f24-8337-bd493dfe32b5" />  
+可以藉由此公式<img width="204" height="36" alt="image" src="https://github.com/user-attachments/assets/aa7e6fc1-3846-4b61-8390-2edcc4c78536" />
+反推得**Objective Function**  
+```math
+  J^{\theta'}(\theta) = E_{(s_t, a_t) \sim \pi_{\theta'}} \left[ \dfrac{P_\theta(a_t \vert s_t)}{P_{\theta'}(a_t \vert s_t)} A^{\theta'}(s_t, a_t) \right]
+```
 
-為了避免theta與theta prime差太多需要加個constraint  
+為了避免$`\theta`$與$`\theta'`$差太多需要加個constraint  
 <img width="309" height="56" alt="image" src="https://github.com/user-attachments/assets/72c664d0-3ec4-4c18-b552-16774d41659e" />  
-<img width="80" height="31" alt="image" src="https://github.com/user-attachments/assets/c9e464bc-1f3f-4665-a2ec-6826b97e4e56" />是為了判定兩者的behavior或者是action有多像;beta設定  
+<img width="80" height="31" alt="image" src="https://github.com/user-attachments/assets/c9e464bc-1f3f-4665-a2ec-6826b97e4e56" />散度是為了判定兩者的behavior或者是action有多像;$`\beta`$設定  
 <img width="528" height="123" alt="image" src="https://github.com/user-attachments/assets/3004c96c-e181-4c94-877d-9c0e2191152d" />  
 
-
-J
 
 
 
 
 - ### Loss function
-最大Object Function取負=最小化loss  
-<img width="559" height="53" alt="image" src="https://github.com/user-attachments/assets/5badf2ac-9f95-4689-907d-e2e7dcbfd950" />  
-  
+```math
+L(\theta) = - J^{\theta'}(\theta)
+```
+```math
+L(\theta) = - E_{(s_t, a_t) \sim \pi_{\theta'}} \left[ \dfrac{P_\theta(a_t \vert s_t)}{P_{\theta'}(a_t \vert s_t)} A^{\theta'}(s_t, a_t) \right]
+```
 ## Chess
 - ### 預計使用演算法
 #### Soft Actor-Critic (SAC)

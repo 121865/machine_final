@@ -2,15 +2,34 @@
 ## Ping Pong
 - ### 預計使用演算法
 #### Proximal Policy Optimization (PPO)
-三個Components:Agent、Enviroment、Reward Function  
+---
+強化學習三個Components:Agent、Enviroment、Reward Function  
 On-policy:跟環境互動的Agent與訓練的Agent為同一個  
 Off-policy:跟環境互動的Agent與訓練的Agent非同一個  
 
-On-policy Gradient:<img width="317" height="39" alt="image" src="https://github.com/user-attachments/assets/2d2482cb-6efc-482e-97fe-809f95270d35" />  
+__On-policy Gradient:__
+```math
+E_{(s_t, a_t) \sim \pi_\theta} \left[ A^\theta(s_t, a_t) \nabla \log p_\theta(a^n_t \vert s^n_t) \right]
+```
+---
+__Importance Sampling__:
+```math
+  E_{x \sim p}\left[f(x) \right]=E_{x \sim q} \left[f(x) \dfrac{p(x)}{q(x)} \right]
+```  
+* __推導如下:__  
+  * $`E_{x \sim p}\left[f(x) \right]\approx \dfrac{1}{N} \sum^N_{i=1} f(x^i)`$  
+    * 沒有辦法對distribution-𝑝計算積分，可以用sample的方式，取平均值來近似期望值  
+  * $`=\int f(x) p(x) dx`$
+    * 對$`p(x)`$計算積分
+  * $`=\int f(x) \dfrac{p(x)}{q(x)} q(x) dx`$
+    * 分子分母同乘$`q(x)`$
+  * $`=E_{x \sim q} \left[f(x) \dfrac{p(x)}{q(x)} \right]`$
+    * 調整為從$`q`$來sample出$`x`$取期望值
+    * 需要乘上一個權重$`\dfrac{p(x)}{q(x)}`$來修正$`p`$,$`q`$兩個distribution之間的差異
 
-Importance Sampling:<img width="302" height="71" alt="image" src="https://github.com/user-attachments/assets/26dc8fe8-b677-42fe-a3e2-f75fe0b042a6" />
 
-Off-policy Gradient:<img width="421" height="67" alt="image" src="https://github.com/user-attachments/assets/e5344828-b05f-4030-9f90-9f957dd22150" />  
+
+Off-policy Gradient:
 
 機率拆解如下  
 <img width="481" height="68" alt="image" src="https://github.com/user-attachments/assets/92334c15-91b7-47cb-aa92-f9d80c7e393d" />
@@ -25,6 +44,7 @@ Off-policy Gradient:<img width="421" height="67" alt="image" src="https://github
 <img width="528" height="123" alt="image" src="https://github.com/user-attachments/assets/3004c96c-e181-4c94-877d-9c0e2191152d" />  
 
 
+J
 
 
 

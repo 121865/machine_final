@@ -22,7 +22,8 @@ Off-policy Gradient:<img width="421" height="67" alt="image" src="https://github
 為了避免theta與theta prime差太多需要加個constraint  
 <img width="309" height="56" alt="image" src="https://github.com/user-attachments/assets/72c664d0-3ec4-4c18-b552-16774d41659e" />  
 <img width="80" height="31" alt="image" src="https://github.com/user-attachments/assets/c9e464bc-1f3f-4665-a2ec-6826b97e4e56" />是為了判定兩者的behavior或者是action有多像;beta設定  
-<img width="528" height="123" alt="image" src="https://github.com/user-attachments/assets/3004c96c-e181-4c94-877d-9c0e2191152d" />
+<img width="528" height="123" alt="image" src="https://github.com/user-attachments/assets/3004c96c-e181-4c94-877d-9c0e2191152d" />  
+$$ J^{\theta^K}_{PPO2} (\theta) \approx \sum_{(s_t,a_t)} \min \left( \frac{p_\theta(a_t|s_t)}{p_{\theta^{K}}(a_t|s_t)} A^{\theta^K}(s_t, a_t), \text{clip} \left( \frac{p_\theta(a_t|s_t)}{p_{\theta^{K}}(a_t|s_t)}, 1 - \epsilon, 1 + \epsilon \right) A^{\theta^K}(s_t, a_t) \right) $$
 
 
 

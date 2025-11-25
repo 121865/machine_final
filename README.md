@@ -96,7 +96,7 @@ R : 過去收集的數據
 <img width="347" height="65" alt="image" src="https://github.com/user-attachments/assets/cd0d1d68-816f-44e9-957c-11bc5682cc79" />  
 
 - ### 應用  
-狀態價值函數 : 衡量當前局面的好壞\
+狀態價值函數 : 衡量當前局面的好壞
 策略函數 : 決定模型在棋盤上的走法選擇傾向  
 loss function : LQ​(ω) --> 評價每步棋的好壞  
                 Lπ​(θ) --> 輸出每一步棋的機率分佈，若多步棋 Q 值接近entropy 會鼓勵模型繼續探索其他可行走法  

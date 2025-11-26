@@ -71,29 +71,92 @@ L(\theta) = - J^{\theta'}(\theta)
 L(\theta) = - E_{(s_t, a_t) \sim \pi_{\theta'}} \left[ \dfrac{P_\theta(a_t \vert s_t)}{P_{\theta'}(a_t \vert s_t)} A^{\theta'}(s_t, a_t) \right]
 ```
 ## Chess
-- ### 預計使用演算法
-#### Soft Actor-Critic (SAC)
-簡介 : 前身為Soft Q-learning，因為Soft Q-learning是使用一個函數Q的Boltzmann distribution，在連續空間下求解麻煩  
-       所以提出了 **Actor** 表示策略函數(Policy function)，屬於off-policy。
-- ### 狀態價值函數
-<img width="533" height="39" alt="image" src="https://github.com/user-attachments/assets/de5c24f6-20e8-4445-ae9e-8469bf29ead9" />  
+* ### 預計使用演算法
+<mark>Soft Actor-Critic (SAC) <mark>  
+  
+**簡介 :**
+前身為Soft Q-learning，因為Soft Q-learning 是一個使用函數Q的Boltzman distribution，在連續空間下求解麻煩，所以提出了**Actor**表示策略函數(Policy Function)，屬於Off-policy。  
+  
+* ### SAC的Object Function  
+  
+```math
+J(\pi) = 𝔼 _\pi \left[ \sum \limits _{t=0} ^{\infty} \gamma ^t (r(s_t,a_t) + \alpha H  (\pi(\cdot|s_t)))\right]
+```
+定義 :  
+$`J(\pi)`$ : 整個SAC想最大化的目標函數，代表策略 $`\pi`$ 的好壞。  
+$`𝔼_\pi [\cdot]`$ : 期望值，代表「照著策略 $`\pi`$ 與環境互動」所得到的平均結果。  
+$`\sum \limits _{t=0} ^\infty`$ : 把整個過程所有時間步的回報累加。  
+$`\gamma^t`$ : 折扣因子(discoun factor) ，介於0~1之間，越久遠的回報權重越低。  
+$`r(s_t,a_t)`$ : reward function，在狀態 $`s_t`$ 做動作 $`a_t`$ 得到的立即回饋。  
+$`\alpha H (\pi(\cdot|s_t))`$ : 探索獎勵(entropy bouns)，由 $`\alpha`$ 跟 $`H (\pi(\cdot|s_t))`$ 組成，「行為越多樣化 $`\to`$ entropy越高 $\to$ 探索越多」。  
+$`\alpha`$ : 溫度係數(temperature/entropy weight) ，控制entropy的重要程度。 $`\alpha`$ 越大 $\to$ 越鼓勵探索；越小 $`\to`$ 越鼓勵利用。  
+$`H (\pi(\cdot|s_t))`$ : policy在 state $`s_t`$ 的entropy ，計算公式等於 $`-𝔼_{a\sim \pi(\cdot|s_t)}\left[log\pi(a_t|s_t) \right]`$。   
+* ### Critic Loss (Q-network的loss)
+  
+```math
+L_Q(\omega) = 𝔼_{(s_t,a_t,r_t,s_{t+1})\sim R}\left[{1\over 2}(Q_\omega (s_t,a_t) - y_t)^2  \right]  
+```
+定義 :  
+$`L_Q(\omega)`$ : Q網路要最小化的損失，而 $`\omega`$ 是Q網路的參數(weights)。  
+$`𝔼_{(s_t,a_t,r_t,s_{t+1})\sim R}[\cdot]`$ : 從經驗回放緩衝區(Replay Buffer)中隨機取樣一個transition做期望，也就是Q是用off-policy資料訓練。R $`\to`$ 經驗數據的分布或集合。  
+$`{1\over 2}(\cdot)^2`$ : 均方誤差(MSE)，希望Q的輸出越接近目標 $`y_t`$。  
+$`Q_\omega (s_t,a_t)`$ : 在狀態 $`s_t`$ 執行動作 $`a_t`$ 的預期總回報(含 entropy)，也就是Q-network輸出這個state-action的價值。  
+$`y_t`$ : 實際應該要接近的價值(Target value) ，等於 $`r_t + \gamma(\min \limits_j Q_{\bar{\omega}_j}(s_{t+1},a_{t+1}) - \alpha log \pi (a_{t+1}|s_{t+1}) )`$    
+$`r_t`$ : 當下reward 。  
+$`\gamma`$ : 折扣因子。  
+$`\min\limits_j Q_{\bar{\omega}_j}(s_{t+1},a_{t+1})`$ : 用兩個target Q-net的最小值，避免高估(Double Q的技巧)。  
+$`\bar{\omega}`$ : target Q-network的參數(慢慢更新的Q，用來穩定訓練)。  
+$`\alpha log \pi (a_{t+1}|s_{t+1})`$ : 下一步entropy bouns。  
+  
+* ### Policy Loss (actor的Loss)
+  
+```math
+L_\pi (\theta) = 𝔼_{s_t \sim R,a_t \sim \pi_\theta} \left[\alpha log \pi_\theta (a_t|s_t) - Q_\omega (s_t,a_t) \right]
+```
+    
+定義 :  
+$`L_\pi (\theta)`$ : actor(policy network)要最小化的損失， $`\theta`$ 為 policy network 的參數。  
+$`s_t \sim R`$ : 狀態從replay buffer抽樣(off-policy) 。  
+$`a_t \sim \pi_\theta(\cdot|s_t)`$ : 在 state $`s_t`$下，從policy $`\pi`$ 取樣動作。  
+$`\alpha log \pi_\theta (a_t|s_t)`$ : 越確定的動作機率越接近1 $`\to`$ log $`\pi`$ 越大(負的)，也可說是這項的效果為 **增加entropy且鼓勵行為更隨機** 。  
+$`-Q_\omega (s_t,a_t)`$ : 若Q值越大則這項負數大 $`\to`$ 有助於降低loss，鼓勵選擇Q高的行為。  
+  
+* ###  $\alpha$  Loss
+  
+```math
+L(\alpha) = 𝔼_{a_t \sim \pi} \left[- \alpha log \pi (a_t|s_t) - \alpha H_0 \right]
+```
+**目的為自動調整 $`\alpha`$ 使 : $`𝔼[-log\pi] = H_0`$，entropy自動維持在希望的水準。**  
+  
+定義 :  
+$`L(\alpha)`$ : 專門用來更新 $`\alpha`$ 的 loss。  
+$`- \alpha log \pi (a_t|s_t)`$ : 當策略過於確定(entropy太低)時， $`log\pi`$會變小，loss偏大會推動 $`\alpha`$ 提高 $\to$ 促使策略更隨機。  
+$`-\alpha H_0`$ : $H_0$ 是目標entropy，讓策略的entropy朝固定目標靠近。  
+  
+* ### Reparameterization Function(SAC core) 
+  
+```math
+a_t = f_\theta(\epsilon_t ;s_t) ， \epsilon_t \sim N(0,I)
+```
 
-- ### Loss function
-SAC中有兩個動作價值函數Q(參數分別為ω1、ω2)及一個策略函數π(參數為θ)，任意一個**Q的loss function**為:  
-<img width="776" height="97" alt="image" src="https://github.com/user-attachments/assets/de78e7c3-f238-4df0-9649-e3fc66b6860e" />  
-R : 過去收集的數據  
-**策略π的loss function**由KL散度得到 :  
-<img width="367" height="39" alt="image" src="https://github.com/user-attachments/assets/916698cc-6b08-4a10-9fed-2aaf27ee72fa" />  
-運用 **重參數化技巧(reparameterization trick)** 及同時考慮兩個函數Q後，重寫策略π的loss function :  
-<img width="515" height="67" alt="image" src="https://github.com/user-attachments/assets/d1ccfc25-760c-4ef7-a699-e0f5b92cd4f4" />  
-在SAC中，如果在最優狀態不確定的情況下Entropy的取值會盡量取大一點；比較確定的情況下則是取小一點。  
-為了能自動調整Entropy正則項，將目標改寫成  
-<img width="478" height="62" alt="image" src="https://github.com/user-attachments/assets/002c9efb-45a4-43cd-be81-8893dfc03d49" />  
-上述也是最大期望回報，並約束Entropy的值>= H0 ，化簡後得到 **α的loss function** :  
-<img width="354" height="42" alt="image" src="https://github.com/user-attachments/assets/8997e6ee-4389-4bce-bba9-9d816dd2ab37" />
-
-- ### Object function
-<img width="347" height="65" alt="image" src="https://github.com/user-attachments/assets/cd0d1d68-816f-44e9-957c-11bc5682cc79" />  
+**讓policy抽樣變成可微 $\to$ 可以用backprop訓練actor。**  
+  
+定義 :  
+$`f_\theta`$ : 一個可微分函數，通常是 $`f_\theta(\epsilon,s) = tanh(\mu_\theta(s_t) + \sigma _\theta(s_t) \cdot \epsilon_t)`$ ，包含高斯分布取樣( $`u_t = \mu_\theta(s_t) + \sigma_\theta(s_t) \cdot \epsilon_t`$ ) 跟 tanh縮放( $`a_t = tanh(u_t)`$ )  
+$`\epsilon_t \sim N(0,I)`$ : 從標準常態N(0,1) 取的noise，提供隨機性。  
+  
+* ### Soft Value Function
+  
+```math
+V(s_t) = 𝔼_{a_t \sim \pi} \left[Q(s_t,a_t) - \alpha log \pi(a_t|s_t) \right]
+```
+  
+**$`V(s_t)`$ = 平均「選到的Q值 + 該動作的探索獎勵」。**  
+定義 :  
+$`V(s_t)`$ : 在狀態 $`s_t`$ 的預期總價值，但soft value不只是reward，也包含 entropy bouns。  
+$`𝔼_{a_t \sim \pi}[\cdot]`$ : 由策略 $`\pi`$ 取樣動作。  
+$`Q(s_t,a_t)`$ : 該動作的Q-value(回報總期望)。  
+$`-\alpha log \pi(a_t|s_t)`$ : 代表探索bouns，越隨機越有獎勵。  
 
 - ### 應用  
 狀態價值函數 : 衡量當前局面的好壞  

@@ -1,5 +1,11 @@
 # machine_final$``$
 ## Ping Pong
+- ### 需求
+  - 功能
+    上、下、停止三種
+  - 效能
+  - 限制
+  - 驗收
 - ### 預計使用演算法
 #### Proximal Policy Optimization (PPO)
 ---

@@ -2,11 +2,16 @@
 ## Ping Pong
 - ### 需求
   - 功能
-    上、下、停止三種
-  - 效能
-  - 限制
-  - 驗收
-- ### 預計使用演算法
+    - 上、下、停止三種
+  - 效能 
+    - miss率壓在1%以下
+  - 限制 
+    - 使用pytorch訓練
+  - 驗收 
+    - 找公開的PPO模型且是pytorch形式對戰取得一半勝率
+
+  
+- ### 文獻回顧
 #### Proximal Policy Optimization (PPO)
 ---
 強化學習三個Components:Agent、Enviroment、Reward Function  
@@ -171,7 +176,7 @@ loss function : LQ​(ω) --> 評價每步棋的好壞
                 Lπ​(θ) --> 輸出每一步棋的機率分佈，若多步棋 Q 值接近entropy 會鼓勵模型繼續探索其他可行走法  
                 L(α)  --> 模型太保守、老是走同一套開局則提高 α，強迫嘗試新策略 ；模型太亂、像亂下棋則降低 α，使決策更穩定  
 - ### Reference
-<https://hackmd.io/@shaoeChen/Bywb8YLKS/https%3A%2F%2Fhackmd.io%2F%40shaoeChen%2FSyez2AmFr#PPO-algorithm>PPO解釋
-<https://medium.com/@kdk199604/ppo-efficient-stable-and-scalable-policy-optimization-15b5b9c74a88>PPO實際應用架構
+<https://hackmd.io/@shaoeChen/Bywb8YLKS/https%3A%2F%2Fhackmd.io%2F%40shaoeChen%2FSyez2AmFr#PPO-algorithm>PPO解釋 
+<https://medium.com/@kdk199604/ppo-efficient-stable-and-scalable-policy-optimization-15b5b9c74a88>PPO實際應用架構 
 <https://hrl.boyuai.com/chapter/2/sac%E7%AE%97%E6%B3%95/>
 

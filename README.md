@@ -82,7 +82,9 @@ L(\theta) = - J^{\theta'}(\theta)
 L(\theta) = - E_{(s_t, a_t) \sim \pi_{\theta'}} \left[ \dfrac{P_\theta(a_t \vert s_t)}{P_{\theta'}(a_t \vert s_t)} A^{\theta'}(s_t, a_t) \right]
 ```
 ---
-### Breakdown&實際使用的Loss Function 
+### 實際使用的Loss Function
+
+### Breakdown 
 <img width="1191" height="711" alt="image" src="https://github.com/user-attachments/assets/536196f4-9d7f-4f28-a636-9b72ee9d54dc" />  
 
 

@@ -225,16 +225,24 @@ anto_resume : 自動找訓練最新檔
 <img width="663" height="227" alt="image" src="https://github.com/user-attachments/assets/e4ef6a8b-a144-404f-8d11-ccb2bb98c60f" />  
 
 - ### 結果
+### step 0 ~ 1800000
+**alpha = 0.05 、 tau = 0.005 、 1r = 1e-4 、**   
+**win = 1 、 lose = -1 、 draw = -0.4 、**  
+**step_penalty = -0.0001 、 material_coeff = 0.02 、 check_bonus = 0.03 、 check_penalty = -0.03**  
+### step 1600000 ~ 2600000
+**alpha改成0.03、tau改成0.003、1r改成5e-5**  
+### step 2600000 ~ 3200000
+**win = 1.2、lose = -1.0 、 draw = -0.6 、**  
+**alpha = 0.02 、 actor_1r = 1e-4 、 critic_1r = 5e-5**
 <img width="640" height="480" alt="actor_loss_curve5" src="https://github.com/user-attachments/assets/d6a13021-8f5c-4283-a0bd-b2aca9d2ff7e" />  
   
 <img width="640" height="480" alt="critic_loss_curve5" src="https://github.com/user-attachments/assets/bb9783a4-53dd-43e8-bf14-b85e59d0b4a2" />  
   
 <img width="640" height="480" alt="eval_curve_fullgamev5" src="https://github.com/user-attachments/assets/8ad74c70-98d1-4171-9103-6f51ab4e175c" />  
-  
 
 
 - ### Reference
-<https://hackmd.io/@shaoeChen/Bywb8YLKS/https%3A%2F%2Fhackmd.io%2F%40shaoeChen%2FSyez2AmFr#PPO-algorithm>PPO解釋 
-<https://medium.com/@kdk199604/ppo-efficient-stable-and-scalable-policy-optimization-15b5b9c74a88>PPO實際應用架構 
+<https://hackmd.io/@shaoeChen/Bywb8YLKS/https%3A%2F%2Fhackmd.io%2F%40shaoeChen%2FSyez2AmFr#PPO-algorithm>PPO解釋   
+<https://medium.com/@kdk199604/ppo-efficient-stable-and-scalable-policy-optimization-15b5b9c74a88>PPO實際應用架構   
 <https://hrl.boyuai.com/chapter/2/sac%E7%AE%97%E6%B3%95/>
 

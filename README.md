@@ -185,11 +185,11 @@ loss function : LQ​(ω) --> 評價每步棋的好壞
                 Lπ​(θ) --> 輸出每一步棋的機率分佈，若多步棋 Q 值接近entropy 會鼓勵模型繼續探索其他可行走法  
                 L(α)  --> 模型太保守、老是走同一套開局則提高 α，強迫嘗試新策略 ；模型太亂、像亂下棋則降低 α，使決策更穩定  
 - ### Breakdown
-![breakdown](https://github.com/user-attachments/assets/7e59e893-60b4-4168-ba47-7e828cf34e60)
+![breakdown](https://github.com/user-attachments/assets/7e59e893-60b4-4168-ba47-7e828cf34e60)  
 - ### API
 - #### train_sac_chess_fullgame.py
-<img width="733" height="165" alt="image" src="https://github.com/user-attachments/assets/9ebabe2d-ce20-4c76-a0de-b3333c11a329" />
-<img width="734" height="402" alt="image" src="https://github.com/user-attachments/assets/0c7ebe40-efa6-4748-bbd5-32bb60ba3f72" />  
+<img width="733" height="165" alt="image" src="https://github.com/user-attachments/assets/9ebabe2d-ce20-4c76-a0de-b3333c11a329" />  
+<img width="734" height="402" alt="image" src="https://github.com/user-attachments/assets/0c7ebe40-efa6-4748-bbd5-32bb60ba3f72" />    
 
 num_steps : 總互動步數  
 updates_per_step : 做幾次參數更新  
@@ -198,34 +198,34 @@ save_intervl : 隔多少global step存一次
 resume_prefix : 手動指定
 anto_resume : 自動找訓練最新檔
 - #### env_chess_boss.py
-<img width="405" height="168" alt="image" src="https://github.com/user-attachments/assets/38d623a1-05e5-42a4-97b0-661df3e63611" />
-<img width="346" height="168" alt="image" src="https://github.com/user-attachments/assets/d7495f7b-6ade-43ad-bf09-1c8aec3bcba1" />
-<img width="474" height="166" alt="image" src="https://github.com/user-attachments/assets/f762c2d0-eeb4-44ee-bc9d-ab9b549803c1" />
-<img width="733" height="254" alt="image" src="https://github.com/user-attachments/assets/68a35f9b-4b70-4ed1-871d-49e4d361c6ea" />
-<img width="472" height="167" alt="image" src="https://github.com/user-attachments/assets/87444f95-eb5d-4e32-a709-86a1868ce437" />
-<img width="474" height="225" alt="image" src="https://github.com/user-attachments/assets/c9ba5ae9-979e-4123-9897-a0b8338aaaac" />
-<img width="548" height="248" alt="image" src="https://github.com/user-attachments/assets/e4fc1fb7-0110-42f6-be1c-c461fe689be4" />
-<img width="547" height="250" alt="image" src="https://github.com/user-attachments/assets/d7eb97b7-4ccd-43f1-9786-50637678238a" />
-<img width="548" height="166" alt="image" src="https://github.com/user-attachments/assets/5be16d8e-4d80-4e21-af57-7a03b5d8eabf" />
-<img width="551" height="168" alt="image" src="https://github.com/user-attachments/assets/2c911992-a02a-440a-86c9-f6871864a02f" />
+<img width="405" height="168" alt="image" src="https://github.com/user-attachments/assets/38d623a1-05e5-42a4-97b0-661df3e63611" />  
+<img width="346" height="168" alt="image" src="https://github.com/user-attachments/assets/d7495f7b-6ade-43ad-bf09-1c8aec3bcba1" />  
+<img width="474" height="166" alt="image" src="https://github.com/user-attachments/assets/f762c2d0-eeb4-44ee-bc9d-ab9b549803c1" />  
+<img width="733" height="254" alt="image" src="https://github.com/user-attachments/assets/68a35f9b-4b70-4ed1-871d-49e4d361c6ea" />  
+<img width="472" height="167" alt="image" src="https://github.com/user-attachments/assets/87444f95-eb5d-4e32-a709-86a1868ce437" />  
+<img width="474" height="225" alt="image" src="https://github.com/user-attachments/assets/c9ba5ae9-979e-4123-9897-a0b8338aaaac" />  
+<img width="548" height="248" alt="image" src="https://github.com/user-attachments/assets/e4fc1fb7-0110-42f6-be1c-c461fe689be4" />  
+<img width="547" height="250" alt="image" src="https://github.com/user-attachments/assets/d7eb97b7-4ccd-43f1-9786-50637678238a" />  
+<img width="548" height="166" alt="image" src="https://github.com/user-attachments/assets/5be16d8e-4d80-4e21-af57-7a03b5d8eabf" />  
+<img width="551" height="168" alt="image" src="https://github.com/user-attachments/assets/2c911992-a02a-440a-86c9-f6871864a02f" />  
 - #### sac_agent.py
-<img width="388" height="223" alt="image" src="https://github.com/user-attachments/assets/dbe3a1f9-c6db-4aef-9310-56c9fc1e2f18" />
-<img width="389" height="163" alt="image" src="https://github.com/user-attachments/assets/89a1af84-9ae9-4bb9-a50b-3e28309e0210" />
-<img width="443" height="461" alt="image" src="https://github.com/user-attachments/assets/4e0b2853-5921-4366-ae2f-5fb679419f4d" />
-<img width="497" height="433" alt="image" src="https://github.com/user-attachments/assets/afeda22f-0f92-4d04-8cae-c436a7f43959" />
-<img width="496" height="166" alt="image" src="https://github.com/user-attachments/assets/ec34c4d7-4b99-4e66-a6f9-58d5bc9f18f3" />
-<img width="657" height="251" alt="image" src="https://github.com/user-attachments/assets/6bb07c7d-7ad9-487c-927d-5af665e964b7" />
-<img width="494" height="198" alt="image" src="https://github.com/user-attachments/assets/64b939fd-be81-48c4-8160-9fec174892d4" />  
+<img width="388" height="223" alt="image" src="https://github.com/user-attachments/assets/dbe3a1f9-c6db-4aef-9310-56c9fc1e2f18" />  
+<img width="389" height="163" alt="image" src="https://github.com/user-attachments/assets/89a1af84-9ae9-4bb9-a50b-3e28309e0210" />  
+<img width="443" height="461" alt="image" src="https://github.com/user-attachments/assets/4e0b2853-5921-4366-ae2f-5fb679419f4d" />  
+<img width="497" height="433" alt="image" src="https://github.com/user-attachments/assets/afeda22f-0f92-4d04-8cae-c436a7f43959" />  
+<img width="496" height="166" alt="image" src="https://github.com/user-attachments/assets/ec34c4d7-4b99-4e66-a6f9-58d5bc9f18f3" />  
+<img width="657" height="251" alt="image" src="https://github.com/user-attachments/assets/6bb07c7d-7ad9-487c-927d-5af665e964b7" />  
+<img width="494" height="198" alt="image" src="https://github.com/user-attachments/assets/64b939fd-be81-48c4-8160-9fec174892d4" />    
 
 "actor_loss": float,"critic1_loss": float,"critic2_loss": float,"alpha_loss": 0.0, "alpha_value": float(alpha),  
-<img width="535" height="315" alt="image" src="https://github.com/user-attachments/assets/7dcb613e-d691-4689-bb0c-561b10bf359d" />
-<img width="542" height="227" alt="image" src="https://github.com/user-attachments/assets/5a1eb769-a24a-4a41-9bad-ea82896a0e52" />
-<img width="663" height="227" alt="image" src="https://github.com/user-attachments/assets/e4ef6a8b-a144-404f-8d11-ccb2bb98c60f" />
+<img width="535" height="315" alt="image" src="https://github.com/user-attachments/assets/7dcb613e-d691-4689-bb0c-561b10bf359d" />  
+<img width="542" height="227" alt="image" src="https://github.com/user-attachments/assets/5a1eb769-a24a-4a41-9bad-ea82896a0e52" />  
+<img width="663" height="227" alt="image" src="https://github.com/user-attachments/assets/e4ef6a8b-a144-404f-8d11-ccb2bb98c60f" />  
 
 - ### 結果
-<img width="640" height="480" alt="actor_loss_curve5" src="https://github.com/user-attachments/assets/d6a13021-8f5c-4283-a0bd-b2aca9d2ff7e" />
-<img width="640" height="480" alt="critic_loss_curve5" src="https://github.com/user-attachments/assets/bb9783a4-53dd-43e8-bf14-b85e59d0b4a2" />
-<img width="640" height="480" alt="eval_curve_fullgamev5" src="https://github.com/user-attachments/assets/8ad74c70-98d1-4171-9103-6f51ab4e175c" />
+<img width="640" height="480" alt="actor_loss_curve5" src="https://github.com/user-attachments/assets/d6a13021-8f5c-4283-a0bd-b2aca9d2ff7e" />  
+<img width="640" height="480" alt="critic_loss_curve5" src="https://github.com/user-attachments/assets/bb9783a4-53dd-43e8-bf14-b85e59d0b4a2" />  
+<img width="640" height="480" alt="eval_curve_fullgamev5" src="https://github.com/user-attachments/assets/8ad74c70-98d1-4171-9103-6f51ab4e175c" />  
 
 
 - ### Reference

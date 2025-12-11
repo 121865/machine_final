@@ -189,7 +189,8 @@ loss function : LQ​(ω) --> 評價每步棋的好壞
 - ### API
 - #### train_sac_chess_fullgame.py
 <img width="733" height="165" alt="image" src="https://github.com/user-attachments/assets/9ebabe2d-ce20-4c76-a0de-b3333c11a329" />
-<img width="734" height="402" alt="image" src="https://github.com/user-attachments/assets/0c7ebe40-efa6-4748-bbd5-32bb60ba3f72" />
+<img width="734" height="402" alt="image" src="https://github.com/user-attachments/assets/0c7ebe40-efa6-4748-bbd5-32bb60ba3f72" />  
+
 num_steps : 總互動步數  
 updates_per_step : 做幾次參數更新  
 log_interval : 印出訓練狀況，計算平均loss  

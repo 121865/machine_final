@@ -199,10 +199,7 @@ resume_prefix : 手動指定
 anto_resume : 自動找訓練最新檔
 - #### env_chess_boss.py
 <img width="405" height="168" alt="image" src="https://github.com/user-attachments/assets/38d623a1-05e5-42a4-97b0-661df3e63611" />  
-
-  
 <img width="346" height="168" alt="image" src="https://github.com/user-attachments/assets/d7495f7b-6ade-43ad-bf09-1c8aec3bcba1" />  
-  
 <img width="474" height="166" alt="image" src="https://github.com/user-attachments/assets/f762c2d0-eeb4-44ee-bc9d-ab9b549803c1" />  
   
 <img width="733" height="254" alt="image" src="https://github.com/user-attachments/assets/68a35f9b-4b70-4ed1-871d-49e4d361c6ea" />  

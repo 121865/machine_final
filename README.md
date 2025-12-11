@@ -233,7 +233,8 @@ anto_resume : 自動找訓練最新檔
 **alpha改成0.03、tau改成0.003、1r改成5e-5**  
 ### step 2600000 ~ 3200000
 **win = 1.2、lose = -1.0 、 draw = -0.6 、**  
-**alpha = 0.02 、 actor_1r = 1e-4 、 critic_1r = 5e-5**
+**alpha = 0.02 、 actor_1r = 1e-4 、 critic_1r = 5e-5**  
+  
 <img width="640" height="480" alt="actor_loss_curve5" src="https://github.com/user-attachments/assets/d6a13021-8f5c-4283-a0bd-b2aca9d2ff7e" />  
   
 <img width="640" height="480" alt="critic_loss_curve5" src="https://github.com/user-attachments/assets/bb9783a4-53dd-43e8-bf14-b85e59d0b4a2" />  

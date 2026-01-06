@@ -1,16 +1,5 @@
 # machine_final$``$
 ## Ping Pong
-- ### 需求
-  - 功能
-    - 上、下、停止三種
-  - 效能 
-    - miss率壓在1%以下
-  - 限制 
-    - 使用pytorch訓練
-  - 驗收 
-    - 找公開的PPO模型且是pytorch形式對戰取得一半勝率
-
-  
 - ### 文獻回顧
 #### Proximal Policy Optimization (PPO)
 ---
@@ -82,20 +71,14 @@ L(\theta) = - J^{\theta'}(\theta)
 L(\theta) = - E_{(s_t, a_t) \sim \pi_{\theta'}} \left[ \dfrac{P_\theta(a_t \vert s_t)}{P_{\theta'}(a_t \vert s_t)} A^{\theta'}(s_t, a_t) \right]
 ```
 ---
-### Loss
-<img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/a1ff5c64-e052-41a7-871a-213249823fab" />  
-<img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/6e320fa7-fcc9-4697-b9af-76c763c678b5" />  
-<img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/79b92ea5-6484-4684-bca7-9dbff0a0c3f1" />  
-<img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/81ab6439-4fec-4f78-ae1b-b806f1d22a34" />  
-<img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/e2dcdb5a-7e41-4dd4-8439-213b49d766b5" />
 
 
 
 
 
 
-### Breakdown 
-<img width="1191" height="711" alt="image" src="https://github.com/user-attachments/assets/536196f4-9d7f-4f28-a636-9b72ee9d54dc" />  
+
+  
 
 
 

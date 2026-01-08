@@ -104,6 +104,8 @@ V(s') = \sum _a \pi(a|s')(min(Q_1(s',a),Q_2(s',a)) - \alpha log \pi (a|s'))
 ```
 模型成果
 ---
+<img width="640" height="490" alt="螢幕擷取畫面 2026-01-06 220740" src="https://github.com/user-attachments/assets/36ebf6c6-4bef-4720-a860-0be549dbac90" />
+<img width="618" height="550" alt="螢幕擷取畫面 2026-01-07 025227" src="https://github.com/user-attachments/assets/940aeff8-3e9d-43a9-9a5b-36efdb9f1da7" />
 <img width="640" height="480" alt="actor_loss_curve_sf_v3" src="https://github.com/user-attachments/assets/165fe6e6-fae2-4e9f-8e88-dde6150358d3" />
 <img width="640" height="480" alt="critic_loss_curve_sf_v3" src="https://github.com/user-attachments/assets/cefb07d4-4969-4f24-a2a7-32249be2edef" />
 

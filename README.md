@@ -1,4 +1,8 @@
 # machine_final$``$
+## 分工
+組長 : F114112116 劉正偉 負責乒乓球  
+組員 : F114112114 胡家豪 負責西洋棋  
+
 ## Ping Pong
 - ### 文獻回顧
 #### Proximal Policy Optimization (PPO)

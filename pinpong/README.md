@@ -80,6 +80,18 @@
       - **$L^{VF}$：價值損失(Value Loss)**
       - **$c_2$：熵係數（Entropy Coefficient**
       - **$`S[\pi_{\theta}](s_t)`$：策略熵 (Policy Entropy)。用於衡量動作分佈的不確定性，增加熵可以鼓勵模型進行更多探索，避免過早陷入局部最佳解。**
+    - **1P Loss plot**
+    - <img width="320" height="240" alt="1P_policy_loss" src="https://github.com/user-attachments/assets/1c6f7de3-0eb6-47ee-9719-6972fccaf580" /> <img width="320" height="240" alt="1P_value_loss" src="https://github.com/user-attachments/assets/2aa21673-303f-414c-8377-fd307e26e261" /><img width="320" height="240" alt="1P_total_loss" src="https://github.com/user-attachments/assets/31c6f008-3aa4-4e5a-959e-fba75678915d" /><img width="320" height="240" alt="1P_entropy" src="https://github.com/user-attachments/assets/e2fa2b49-f89c-4816-848a-95ff20d583da" />
+    - **2P Loss plot**
+    - <img width="320" height="240" alt="2P_policy_loss" src="https://github.com/user-attachments/assets/19f87e2c-bb5a-4674-b60f-a4c531d52aa5" /><img width="320" height="240" alt="2P_value_loss" src="https://github.com/user-attachments/assets/456f6fa3-6f98-40ba-a71e-c4f1adf11178" /><img width="320" height="240" alt="2P_total_loss" src="https://github.com/user-attachments/assets/fea85e20-a572-4b5b-97d6-ad93c186614c" /><img width="320" height="240" alt="2P_entropy" src="https://github.com/user-attachments/assets/c9c2c5b9-b3d5-4e3e-9c7f-abf4b96208c0" />
+
+
+
+
+
+
+
+
 ## 系統規格  
   ### 作業系統:Windows11
   ### Python版本:3.9以上
@@ -89,7 +101,7 @@
      MLGame + pygame（實際對打 / 視覺化
      Matplotlib（訓練結果分析）
 ## 系統拆解(Breakdown)
-<img width="1119" height="849" alt="image" src="https://github.com/user-attachments/assets/6df812c7-fd8b-4e8f-89be-6e95faa44ae4" />
+<img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/6df812c7-fd8b-4e8f-89be-6e95faa44ae4" />
 
 ## API(主要函式使用說明)
   ### API from train.py
@@ -108,10 +120,10 @@
   |forward()|x|logits: torch.Tensor|用 logits 來選動作|
 ## 流程圖說明  
  ### 資料收集&訓練
-   <img width="838" height="700" alt="image" src="https://github.com/user-attachments/assets/c121680f-b298-435a-9a38-4e1f0161c947" />  
+   <img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/c121680f-b298-435a-9a38-4e1f0161c947" />  
    
  ### 推論
- <img width="768" height="795" alt="image" src="https://github.com/user-attachments/assets/6b3f7ada-e032-482a-a258-035650e80d4b" />  
+ <img width="640" height="480" alt="image" src="https://github.com/user-attachments/assets/6b3f7ada-e032-482a-a258-035650e80d4b" />  
 
 
 ## 驗收  

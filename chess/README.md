@@ -9,7 +9,7 @@ Chess model
 
 架構圖
 ---
-<img width="1094" height="243" alt="image" src="https://github.com/user-attachments/assets/8fd9d20f-df4d-46b7-83f5-84f0c6455a89" />  
+<img width="1398" height="416" alt="image" src="https://github.com/user-attachments/assets/997473f9-7428-4680-8ecf-3170b677b273" />  
 
 Breakdown
 ---
@@ -80,10 +80,29 @@ Loss Function
 ```
 q1 = critic1(states).gather(actions)
 q2 = critic2(states).gather(actions)
+```
+```math
+Q_1(s_t,a_t),Q_2(s_t,a_t)
+```
+```
 target_q = r + (1-done) * gamma * V(next_state)
+```
+```math
+y_t = r_t + (1-done_t) \gamma V(s_{t+1})
+```
+其中done表示終止狀態，用來告訴Critic這步有沒有未來價值可以期待。  
+若非終止狀態(done = 0) : $y_t = r_t + \gamma V(s_{t+1})$  
+為終止狀態(done = 1) : $y_t = r_t$
+
+```
 critic1_loss = mse(q1, target_q)
 critic2_loss = mse(q2, target_q)
 ```
+
+```math
+L_{Q_i} = 𝔼_{(s,a,r,s')}[(Q_i(s,a) - y_t)^2], i ϵ {1,2}
+```
+
 ### Actor Loss (Policy的objective，用來最小化)  
 放在sac_agent.py的_update_once()中  
 ```
